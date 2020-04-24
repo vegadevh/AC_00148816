@@ -3,6 +3,26 @@
 	
 	org	100h
 
+	;Obteniendo promedio
+	mov	ax, 0000h
+	mov	bx, 0000h
+	mov	ax, 4d
+	mov	bx, 8d
+	add	ax, bx ;4+8=12
+	mov	bx, 8d
+	add	ax, bx ;12+8=20
+	mov	bx, 1d
+	add	ax, bx ;20+1=21
+	mov	bx, 6d
+	add	ax, bx ;21+6=27
+
+	mov	dx, 0000h ;Limpiar dx
+	mov	bx, 5d
+
+	div	bx ;27/dx
+
+	;cociente en ax = 5
+
 	;Colocando palabra
 	mov	cl, "E"
 	mov	[200h], cl
