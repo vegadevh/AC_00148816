@@ -7,10 +7,9 @@
 
 	;Datos
 	mov	ax, 0000h
-	mov	al, 0000h
 	mov	cx, 0000h
 
-	mov	al, 2d ;Casos del primer dia
+	mov	ax, 2d ;Casos del primer dia
 	mov	cx, 2d ;Constante para realizar producto
 
 	mov	bx, 0d
@@ -19,7 +18,6 @@
 covid:	mul	cx
 	mov	[210h + bx], ax
 	inc	bx ;Contador
-	mov	cx, ax ;cx tomara el valor actual de casos
 
 	mov	dx, 11d
 	cmp	dx, bx
