@@ -12,19 +12,23 @@
 	mov	ax, 2d ;Casos del primer dia
 	mov	cx, 2d ;Constante para realizar producto
 
-	mov	bx, 0d
+	mov	bx, 210h
 	mov	dx, 0000h
 
 covid:	mul	cx
-	mov	[210h + bx], ax
-	inc	bx ;Contador
+	mov	[bx], ax
+	;Llega a los 255, mostrar por medio de saltos
+	;JMP
+	cmp     ah, 00h
+        ja      mas
+        je      uno
 
-	mov	dx, 11d
-	cmp	dx, bx
-	ja	covid ;Si bx no es igua
+mas:    add     bx, 2h
+        jmp     pasa
 
-	mov	dx, 11d
-	cmp	dx, bx
-	je	covid ;Si bx no es igua
+uno:    add     bx, 1h
+
+pasa:    cmp     bx, 21Fh
+        jb      covid
 
 	int	20h
