@@ -13,14 +13,20 @@
 	mov	al, 2d ;Casos del primer dia
 	mov	cx, 2d ;Constante para realizar producto
 
-	mov	cl, 0000h
+	mov	bx, 0d
+	mov	dx, 0000h
 
 covid:	mul	cx
-	mov	[210h + cl], cx
-	inc	cl ;Contador
-	mov	al, ax ;al tomara el valor actual de casos
+	mov	[210h + bx], ax
+	inc	bx ;Contador
+	mov	cx, ax ;cx tomara el valor actual de casos
 
-	cmp	cl, 000Bh
-	je	covid ;Si cl no es igual a 11 realiza covid
+	mov	dx, 11d
+	cmp	dx, bx
+	ja	covid ;Si bx no es igua
 
-	
+	mov	dx, 11d
+	cmp	dx, bx
+	je	covid ;Si bx no es igua
+
+	int	20h
