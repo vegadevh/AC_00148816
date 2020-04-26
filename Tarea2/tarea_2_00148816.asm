@@ -1,3 +1,4 @@
+;EJERCICIO 2
 ;Soy el de las graficas :c
 
 ;La maravillosa y precisa formula precisa: Dos casos el dia 1 se duplica cada 3 dias
@@ -18,15 +19,15 @@
 covid:	mul	cx
 	mov	[bx], ax
 	;Llega a los 255, mostrar por medio de saltos
-	;JMP
+	;mod JMP
 	cmp     ah, 00h
-        ja      mas
-        je      uno
+        ja      saltos
+        je      salto
 
-mas:    add     bx, 2h
+saltos:    add     bx, 2h
         jmp     pasa
 
-uno:    add     bx, 1h
+salto:    add     bx, 1h
 
 pasa:    cmp     bx, 21Fh
         jb      covid
