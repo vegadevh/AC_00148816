@@ -15,4 +15,9 @@
 	mov	[bx], ax
 	mov	bx, 222h
 
+	mov	al, 2d
+	mov	cl, 1d
+	mov	bl, 2d
+	
+
 	int	20h
