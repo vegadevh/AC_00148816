@@ -36,15 +36,11 @@ kbwait: mov 	ax, 0000h
 
 m_cursr:mov 	ah, 02h
 	mov 	dx, di  ; columna
-	mov 	dh, 12d ; fila
+
+	add	dl, [210h]
+	mov 	dh, [200h] ; fila
 	mov 	bh, 0h
 	int 	10h
-	ret
-
-saltos:	mov	[200h], ax
-	mov	ax, 3h
-	add	[203h],ax
-	mov	ax, [200h]
 	ret
 
 phrase:	mov 	di, 0d
@@ -54,7 +50,6 @@ lupi:	mov 	cl, [msg+di]
 	inc	di
 	cmp 	di, len
 	jb	lupi
-	call	saltos
 	ret
 
 phrase2:	mov 	di, 0d
@@ -62,9 +57,8 @@ lupi2:	mov 	cl, [msg2+di]
 	call    m_cursr
 	call 	w_char
 	inc	di
-	cmp 	di, len
-	jb	lupi
-	call	saltos
+	cmp 	di, len2
+	jb	lupi2
 	ret
 
 phrase3:	mov 	di, 0d
@@ -72,9 +66,8 @@ lupi3:	mov 	cl, [msg3+di]
 	call    m_cursr
 	call 	w_char
 	inc	di
-	cmp 	di, len
-	jb	lupi
-	call	saltos
+	cmp 	di, len3
+	jb	lupi3
 	ret
 
 
