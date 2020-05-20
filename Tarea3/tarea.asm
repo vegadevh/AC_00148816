@@ -4,8 +4,22 @@ section .text
 
 	call 	texto	
 	call 	cursor
+	mov	ah, 3d
+	mov	[200h], ah
+	mov 	ah, 5d
+	mov	[210h], ah
 	call 	phrase
+
+	mov	ah, 6d
+	mov	[200h], ah
+	mov 	ah, 45d
+	mov	[210h], ah
 	call	phrase2
+
+	mov	ah, 9d
+	mov	[200h], ah
+	mov 	ah, 5d
+	mov	[210h], ah
 	call	phrase3
 	call	kbwait
 
