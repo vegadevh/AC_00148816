@@ -79,9 +79,9 @@ lupi3:	mov 	cl, [msg3+di]
 
 
 section .data
-msg	db 	"Muy wenas? "
+msg	db 	"Deberias ver tu mirada, es la de un total mediocre"
 len 	equ	$-msg
-msg2	db	"Como tas?"
+msg2	db	"Por que? Por que me salvaste?"
 len2 	equ	$-msg2
-msg3	db	"Saludos a tu mami"
+msg3	db	"No lo se, solo lo hice y ya"
 len3 	equ	$-msg3
