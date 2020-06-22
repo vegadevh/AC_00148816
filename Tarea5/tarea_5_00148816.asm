@@ -12,7 +12,7 @@ section .text
 	mov	si, 30d
 	mov	di, 30d
 	call	linea_vg
-
+	;linea pequeña
 	mov 	si, 30d ; X -> Columna
 	mov 	di, 30d ; Y -> Fila
 	call 	linea_hg
@@ -20,6 +20,18 @@ section .text
 	mov 	si, 160d ; X -> Columna
 	mov 	di, 30d ; Y -> Fila
 	call 	linea_vp
+	;brazo 1
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 50d ; Y -> Fila
+	call 	linea_hp
+	;brazo 2
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 100d ; Y -> Fila
+	call 	linea_hp
+	;brazo 3
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 150d ; Y -> Fila
+	call 	linea_hp
 
 
 	call 	kb		; Utilizamos espera de alguna tecla
@@ -54,7 +66,7 @@ lupi_hp:mov 	cx, 0d ; Columna
 	mov	dx, di ; Fila
 	call 	pixel
 	inc 	si
-	cmp 	si, 120d
+	cmp 	si, 161d ;1 pixel extra porque no me gusta ese punto vacio :(
 	jne 	lupi_hp
 	ret
 
