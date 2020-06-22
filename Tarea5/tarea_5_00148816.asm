@@ -12,27 +12,54 @@ section .text
 	mov	si, 30d
 	mov	di, 30d
 	call	linea_vg
-	;linea pequeña
+	
 	mov 	si, 30d ; X -> Columna
 	mov 	di, 30d ; Y -> Fila
 	call 	linea_hg
-
+	;linea pequeña
 	mov 	si, 160d ; X -> Columna
 	mov 	di, 30d ; Y -> Fila
 	call 	linea_vp
 	;brazo 1
 	mov 	si, 70d ; X -> Columna
-	mov 	di, 50d ; Y -> Fila
+	mov 	di, 60d ; Y -> Fila
 	call 	linea_hp
+
+	;LINEA MEDIA-------------------------------------------
+	
+
+
 	;brazo 2
 	mov 	si, 70d ; X -> Columna
-	mov 	di, 100d ; Y -> Fila
+	mov 	di, 90d ; Y -> Fila
 	call 	linea_hp
-	;brazo 3
+
+	;linea pequeña
+	mov 	si, 160d ; X -> Columna
+	mov 	di, 0d ; Y -> Fila
+	call 	linea_vpm
+
+	;brazo 2
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 120d ; Y -> Fila
+	call 	linea_hp
+
+	;LINEA MEDIA-------------------------------------------
+
+	;brazo 4
 	mov 	si, 70d ; X -> Columna
 	mov 	di, 150d ; Y -> Fila
 	call 	linea_hp
 
+	;linea pequeña
+	mov 	si, 160d ; X -> Columna
+	mov 	di, 0d ; Y -> Fila
+	call 	linea_vpb
+
+	;linea final
+	mov 	si, 30d ; X -> Columna
+	mov 	di, 180d ; Y -> Fila
+	call 	linea_hg
 
 	call 	kb		; Utilizamos espera de alguna tecla
 
@@ -99,8 +126,28 @@ lupi_vp:mov 	cx, si ; Columna
 	add 	dx, di
 	call 	pixel
 	inc 	di
-	cmp 	di, 50d
+	cmp 	di, 60d
 	jne 	lupi_vp
+	ret
+
+linea_vpb:
+lupi_vpb:mov 	cx, si ; Columna 
+	mov	dx, 150d ; Fila
+	add 	dx, di
+	call 	pixel
+	inc 	di
+	cmp 	di, 31d
+	jne 	lupi_vpb
+	ret
+
+linea_vpm:
+lupi_vpm:mov 	cx, si ; Columna 
+	mov	dx, 90d ; Fila
+	add 	dx, di
+	call 	pixel
+	inc 	di
+	cmp 	di, 31d
+	jne 	lupi_vpm
 	ret
 
 kb: 	mov	ah, 00h
