@@ -26,7 +26,9 @@ section .text
 	call 	linea_hp
 
 	;LINEA MEDIA-------------------------------------------
-	
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 0d ; Y -> Fila
+	call 	linea_vmi
 
 
 	;brazo 2
@@ -39,12 +41,15 @@ section .text
 	mov 	di, 0d ; Y -> Fila
 	call 	linea_vpm
 
-	;brazo 2
+	;brazo 3
 	mov 	si, 70d ; X -> Columna
 	mov 	di, 120d ; Y -> Fila
 	call 	linea_hp
 
 	;LINEA MEDIA-------------------------------------------
+	mov 	si, 70d ; X -> Columna
+	mov 	di, 0d ; Y -> Fila
+	call 	linea_vmf
 
 	;brazo 4
 	mov 	si, 70d ; X -> Columna
@@ -109,14 +114,25 @@ lupi_vg:mov 	cx, si ; Columna
 	ret
 
 ;vertical mediana
-linea_vm:
-lupi_vm:mov 	cx, si ; Columna 
-	mov	dx, 0d ; Fila
+linea_vmi:
+lupi_vmi:mov 	cx, si ; Columna 
+	mov	dx, 60d ; Fila
 	add 	dx, di
 	call 	pixel
 	inc 	di
-	cmp 	di, 60d
-	jne 	lupi_vm
+	cmp 	di, 30d
+	jne 	lupi_vmi
+	ret
+
+;vertical mediana
+linea_vmf:
+lupi_vmf:mov 	cx, si ; Columna 
+	mov	dx, 120d ; Fila
+	add 	dx, di
+	call 	pixel
+	inc 	di
+	cmp 	di, 30d
+	jne 	lupi_vmf
 	ret
 
 ;vertical pequeña
